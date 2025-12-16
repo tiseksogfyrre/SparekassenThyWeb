@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MomentozWebClient.Models.Flight>
+
+@{
+    ViewData["Title"] = "Flyrejser";
+}
+
+<h1>Rejser</h1>
+@if (Model == null)
+{
+    <h4> Der er i øjeblikket ingen tilgængelige rejser.</h4>
+} else
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Departure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DestinationAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DestinationCountry)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DestinationAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DestinationCountry)
+            </td>
+            <td>
+                <a asp-controller="Order" asp-action="ViewOrderData" asp-route-id="@item.FlightID">Vælg</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+}

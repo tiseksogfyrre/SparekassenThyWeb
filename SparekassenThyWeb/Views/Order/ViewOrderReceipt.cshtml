@@ -1,0 +1,61 @@
+﻿@model MomentozWebClient.Models.OrderData
+@{
+    ViewData["Title"] = "Kvittering";
+}
+
+@if (Model != null)
+{
+    <h1>Ordren gennemført</h1>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div>
+                    <h4>Order</h4>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            Total Price
+                        </dt>
+                        <dd class="col-sm-10">
+                            <div style="background-color:#000;color:#fff;margin-bottom:5px; padding:5px; width:160px; text-align:center;">
+                                @Html.DisplayFor(model => model.OrderOrder.TotalPrice)
+                            </div>
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.OrderOrder.PurchaseDate)
+                        </dt>
+                        <dd class="col-sm-10">
+                            <div style="background-color:#000;color:#fff;margin-bottom:5px; padding:5px; width:160px; text-align:center;">
+                                @Html.DisplayFor(model => model.OrderOrder.PurchaseDate)
+                            </div>
+                        </dd>
+                        <dt class="col-sm-2">
+                            Kunde Email
+                        </dt>
+                        <dd class="col-sm-10">
+                            <div style="background-color:#000;color:#fff;margin-bottom:5px; padding:5px; width:160px; text-align:center;">
+                               @Html.DisplayFor(model => model.OrderCustomer.Email)
+                            </div>
+                        </dd>
+                        <dt class="col-sm-2">
+                            Rejse Nummer
+                        </dt>
+                        <dd class="col-sm-10">
+                            <div style="background-color:#000;color:#fff;margin-bottom:5px; padding:5px; width:160px; text-align:center;">
+                                @Html.DisplayFor(model => model.OrderFlight.FlightID)
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h1>Din ordre kunne ikke blive skabt</h1>
+    <h4>En anden har placeret ordreren på rejsen før dig.</h4>
+    <p>Du er velkommen til og bestille en anden rejse :)</p>
+}
+
